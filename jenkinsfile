@@ -77,11 +77,11 @@ node{
 
         if (isUnix()) {
             sourcepush = sh(returnStdout: true, script:
-                "sfdx force:mdapi:deploy -d ./src -u ${HUB_ORG} -w -1"
+                "sf project deploy start --metadata-dir ./src --target-org ${HUB_ORG} --wait 10"
             ).trim()
         } else {
             sourcepush = bat(returnStdout: true, script:
-                "sfdx force:mdapi:deploy -d ./src -u ${HUB_ORG} -w -1"
+                "sf project deploy start --metadata-dir ./src --target-org ${HUB_ORG} --wait 10"
             )
         }
 
@@ -96,11 +96,11 @@ node{
 
         if (isUnix()) {
             statusDep = sh(returnStdout: true, script:
-                "sfdx force:mdapi:deploy:report -u ${HUB_ORG} --json"
+                "sf project deploy report --target-org ${HUB_ORG} --json"
             ).trim()
         } else {
             statusDep = bat(returnStdout: true, script:
-                "sfdx force:mdapi:deploy:report -u ${HUB_ORG} --json"
+                "sf project deploy report --target-org ${HUB_ORG} --json"
             )
         }
 
@@ -116,11 +116,11 @@ node{
 
         if (isUnix()) {
             statusDep1 = sh(returnStdout: true, script:
-                "sfdx force:mdapi:deploy:report -u ${HUB_ORG} --json"
+                "sf project deploy report --target-org ${HUB_ORG} --json"
             ).trim()
         } else {
             statusDep1 = bat(returnStdout: true, script:
-                "sfdx force:mdapi:deploy:report -u ${HUB_ORG} --json"
+                "sf project deploy report --target-org ${HUB_ORG} --json"
             )
         }
 
